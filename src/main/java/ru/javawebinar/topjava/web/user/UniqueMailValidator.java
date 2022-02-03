@@ -39,11 +39,7 @@ public class UniqueMailValidator implements org.springframework.validation.Valid
                 Assert.notNull(request, "HttpServletRequest missed");
                 if (request.getMethod().equals("PUT")) {  // update
                 int dbId = dbUser.id();
-                // it is ok, if update ourself
                 if (user.getId() != null && dbId == user.id()) return;
-
-                    // workaround for update with user.id=null in request body
-                    // ValidationUtil.assureIdConsistent (id setter) called after this validation
                     String requestURI = request.getRequestURI();
                     if (requestURI.endsWith("/" + dbId) || (dbId == SecurityUtil.get().getId() && requestURI.contains("/profile"))) return;
                 }

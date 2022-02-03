@@ -24,7 +24,7 @@ public class UserTo extends BaseTo implements HasIdAndEmail, Serializable {
     @Email
     @NotBlank
     @Size(max = 100)
-    @NoHtml // https://stackoverflow.com/questions/17480809
+    @NoHtml
     private String email;
 
     @NotBlank

@@ -9,14 +9,7 @@ import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import ru.javawebinar.topjava.View;
 
-/**
- * <p>
- * Handling Hibernate lazy-loading
- *
- * @link https://github.com/FasterXML/jackson
- * @link https://github.com/FasterXML/jackson-datatype-hibernate
- * @link https://github.com/FasterXML/jackson-docs/wiki/JacksonHowToCustomSerializers
- */
+
 public class JacksonObjectMapper extends ObjectMapper {
 
     private static final ObjectMapper MAPPER = new JacksonObjectMapper();
@@ -31,7 +24,6 @@ public class JacksonObjectMapper extends ObjectMapper {
         setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-//      https://stackoverflow.com/questions/22875642/jackson-set-default-view
         setConfig(getSerializationConfig().withView(View.JsonREST.class));
     }
 
